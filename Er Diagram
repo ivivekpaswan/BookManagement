@@ -1,0 +1,52 @@
+ER diagram:-----
+
+1st.....
+
++--------------+          +-----------------+
+|   Book       |          |   Borrower      |
++--------------+          +-----------------+
+| - id         | <------> | - id            |
+| - title      |          | - name          |                                        
+| - author     |          | - borrowedBook  |
+| - quantity   |          | - borrowedDate  |
++--------------+          +-----------------+
+
+Book: Represents books available in the library, identified by an ID. Each book has attributes such as title, author, and quantity.
+
+Borrower: Represents individuals who borrow books from the library, identified by an ID. Each borrower has attributes such as name, address, and email.
+
+
+2nd......
+
++--------------+           +-----------------+
+|   Book       |           |   Borrower      |
++--------------+           +-----------------+
+| - id         |           | - id            |
+| - title      |           | - name          |
+| - author     |           | - address       |
+| - quantity   |           | - email         |
++--------------+           +-----------------+
+       |                            |
+       |                            |
+       |                            |
+       |                            |
+       |                            |
+       |                            |
+       |                            |
++--------------+           +-------------------+
+| BorrowedBook |           |   Transaction     |
++--------------+           +-------------------+
+| - id         |           | - id              |
+| - bookId     |           | - borrowerId      |
+| - borrowerId |           | - bookId          |
+| - borrowedDate|           | - transactionDate|
++--------------+           | - returnedDate   |
+                             | - fine           |
+                             +-------------------+
+
+
+BorrowedBook: Represents the relationship between books and borrowers. It tracks which book is borrowed by which borrower and the date it was borrowed.
+
+Transaction: Records transactions when a book is borrowed or returned. It includes details such as the transaction ID, borrower ID, book ID, transaction date, return date, and any fines incurred.
+
+
